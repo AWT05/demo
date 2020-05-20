@@ -9,9 +9,8 @@ public class TeamHome extends MobileBasePage {
     @FindBy(css = "._2BCgr50F6ruIZ5")
     private WebElement teamName;
 
-    public String getTeamName(){
-        String name= teamName.getText();
-        return name;
+    public String getTeamName() {
+        return action.getElementText(teamName);
     }
 
 }

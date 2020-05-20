@@ -1,5 +1,6 @@
 package webdriver;
 
+import config.Environment;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class ManageDriver {
 
-    private static final String BASE_URL = "https://trello.com/login";
+    private static final String BASE_URL = Environment.getInstance().getBaseUrl();
     private static final Integer WAIT_TIME = 10;
     private final WebDriver driver;
     private WebDriverWait wait;

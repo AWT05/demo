@@ -1,13 +1,8 @@
 package managepage.team;
 
 import managepage.MobileBasePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import utils.CommonEvents;
-import webdriver.ManageDriver;
 
 import java.util.List;
 
@@ -35,27 +30,27 @@ public class CreateTeamForm extends MobileBasePage {
     private WebElement emailTextBox;
 
     public void fillTeamName(String name) {
-        CommonEvents.setInputField(teamNameTextBox, name);
+        action.setInputField(teamNameTextBox, name);
     }
 
     public void selectTeamTypeMenu(String typeTeam) {
-        CommonEvents.clickButton(teamTypeMenu);
+        action.clickButton(teamTypeMenu);
         action.selectListWebElement(typeTeam, teamTypeList);
     }
 
-    public void fillTextArea(String description){
-        CommonEvents.setInputField(teamDescriptionTextArea, description);
+    public void fillTextArea(String description) {
+        action.setInputField(teamDescriptionTextArea, description);
     }
 
-    public void continueButtonAction(){
-        CommonEvents.clickButton(continueButton);
+    public void continueButtonAction() {
+        action.clickButton(continueButton);
     }
 
-    public void inviteButtonAction(){
-        CommonEvents.clickButton(inviteButton);
+    public void inviteButtonAction() {
+        action.clickButton(inviteButton);
     }
 
-    public void fillEmailTexBox(String email){
-        CommonEvents.setInputField(emailTextBox, email);
+    public void fillEmailTexBox(String email) {
+        action.setInputField(emailTextBox, email);
     }
 }

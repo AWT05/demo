@@ -3,7 +3,7 @@ package org.fundacion.demo.stepdefs;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import managepage.Home;
-import managepage.Login;
+import managepage.login.Login;
 
 public class CommonStepDef {
 
