@@ -18,41 +18,28 @@ import java.util.concurrent.TimeUnit;
 
 public class Demo {
 
-    ChromeDriver driver;
 
-    @BeforeMethod
-    public void init() {
+
+    @Test
+    public void testLoginTrello() {
         WebDriverManager.chromedriver().setup();
         ChromeDriver driver = new ChromeDriver();
-        this.driver = driver;
+
         driver.manage().window().setSize(new Dimension(414, 736));
-    }
 
-    @AfterMethod
-    public void quit() {
-        driver.quit();
-    }
+        driver.get("https://trello.com/login");
 
-//    @Test
-//    public void testLoginTrello() {
-////        WebDriverManager.chromedriver().setup();
-////        ChromeDriver driver = new ChromeDriver();
-////
-////        driver.manage().window().setSize(new Dimension(414, 736));
-//
-//        driver.get("https://trello.com/login");
-//
-//        driver.findElement(By.cssSelector("#user")).sendKeys("carledriss3");
-//        driver.findElement(By.cssSelector("#password")).sendKeys("P@ssw0rd");
-//        driver.findElement(By.cssSelector("input.account-button")).click();
-//
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        driver.findElement(By.xpath("//*[@id=\"header\"]/div[2]/button[1]/span")).click();
-//        driver.findElement(By.xpath("/html/body/div[14]/div/section/div/nav/ul/li[2]/button/p")).click();
-//        driver.findElement(By.className("_1CLyNodCAa-vQi")).sendKeys("Hello new team!");
-//
-//        driver.findElement(By.xpath("//*[@id=\"teamTypeSelect\"]/div/div")).click();
-//
+        driver.findElement(By.cssSelector("#user")).sendKeys("carledriss3");
+        driver.findElement(By.cssSelector("#password")).sendKeys("P@ssw0rd");
+        driver.findElement(By.cssSelector("input.account-button")).click();
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.findElement(By.xpath("//*[@id=\"header\"]/div[2]/button[1]/span")).click();
+        driver.findElement(By.xpath("/html/body/div[14]/div/section/div/nav/ul/li[2]/button/p")).click();
+        driver.findElement(By.className("_1CLyNodCAa-vQi")).sendKeys("Hello new team!");
+
+        driver.findElement(By.xpath("//*[@id=\"teamTypeSelect\"]/div/div")).click();
+
 //        List<WebElement> options = driver.findElementsByXPath("/html/body/div[14]/div/section/div/nav/ul/li[2]/button/p");
 //        for (WebElement option : options) {
 //            if (option.getText().equals("Education")) {
@@ -60,25 +47,7 @@ public class Demo {
 //                break;
 //            }
 //        }
-//        driver.close();
-//        driver.quit();
-//    }
-
-    @Test
-    public void testLoginTrelloByPage() {
-
-        Login LoginPage = new Login(driver);
-        LoginPage.logInIntoTrello();
-//		assert (result,"HOME")???
+        driver.close();
+        driver.quit();
     }
-
-    @Test
-    public void testCreateTeamMobileTrelloByPage() {
-
-        Login LoginPage = new Login(driver);
-        LoginPage.logInIntoTrello();
-        Home HomePage = new Home(driver);
-        HomePage.createTeam();
-    }
-
 }
