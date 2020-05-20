@@ -22,7 +22,7 @@ public class Login {
     @FindBy(css = "input.account-button")
     WebElement logInGreenButton;
 
-    public Login(ChromeDriver driver) {
+    public Login(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }

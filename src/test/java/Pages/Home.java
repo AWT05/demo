@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -13,30 +15,35 @@ import java.util.concurrent.TimeUnit;
 public class Home {
     private final static String TEAM_NAME = "Hello new team!";
     private final static String ADD_BUTTON_XPATH = "//*[@id=\"header\"]/div[2]/button[1]/span";
-    private final static String CREATE_TEAM_XPATH = "/html/body/div[14]/div/section/div/nav/ul/li[2]/button/p";
+    private final static String CREATE_TEAM_CSS = "button[data-test-id=header-create-team-button]";
     private final static String TEAM_NAME_CLASS_NAME = "_1CLyNodCAa-vQi";
     private final static String TEAM_TYPE_XPATH = "//*[@id=\"teamTypeSelect\"]/div/div";
-    private ChromeDriver driver;
+    private ChromeDriver drivers;
+    private WebDriverWait wait;
 
-    @FindBy(xpath = "//*[@id=\"header\"]/div[2]/button[1]/span")
+
+    @FindBy(xpath = ADD_BUTTON_XPATH)
     WebElement AddButton;
 
-    @FindBy(xpath = "/html/body/div[14]/div/section/div/nav/ul/li[2]/button/p")
+    @FindBy(css = CREATE_TEAM_CSS)
     WebElement CreateTeamButton;
 
-    @FindBy(className = "_1CLyNodCAa-vQi")
+    @FindBy(className = TEAM_NAME_CLASS_NAME)
     WebElement TeamNameInput;
 
-    @FindBy(xpath = "//*[@id=\"teamTypeSelect\"]/div/div")
+    @FindBy(xpath = TEAM_TYPE_XPATH)
     WebElement TeamTypeMenu;
 
     public Home(ChromeDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        this.drivers = driver;
+        wait = new WebDriverWait(driver, 10);
+        PageFactory.initElements(drivers, this);
+
     }
 
     public void addButtonClick() {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS) ;
+//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS) ;
+        wait.until(ExpectedConditions.elementToBeClickable(AddButton));
         AddButton.click();
     }
 
@@ -45,15 +52,18 @@ public class Home {
         CreateTeamButton.click();
         TeamNameInput.sendKeys(TEAM_NAME);
         TeamTypeMenu.click();
-        List<WebElement> options=driver.findElementsByXPath("/html/body/div[14]/div/section/div/nav/ul/li[2]/button/p");
-        for(WebElement option:options){
-            if(option.getText().equals("Education")){
+//        wait.until(ExpectedConditions.elementToBeClickable());
+//        List<WebElement> options=driver.findElementsByXPath("/html/body/div[14]/div/section/div/nav/ul/li[2]/button/p");
+        List<WebElement> options = drivers.findElementsByCssSelector("div[data-test-id=header-create-team-type-input-");
+//        wait.until(ExpectedConditions.attributeToBeNotEmpty(name, "innerText"));
+
+        for (WebElement option : options) {
+            if (option.getText().equals("Education")) {
                 option.click();
                 break;
             }
         }
     }
-
 
 
 }

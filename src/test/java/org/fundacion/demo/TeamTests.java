@@ -31,7 +31,6 @@ public class TeamTests {
 
         Login LoginPage = new Login(driver);
         LoginPage.logInIntoTrello();
-//		assert (result,"HOME")???
     }
 
     @Test
