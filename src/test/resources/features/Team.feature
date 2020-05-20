@@ -12,4 +12,5 @@ Feature: Create Team
     And invite a member setting the email "kenshinmc23@gmail.com"
     And click on the Invite button
     Then verify the team name "New test team"
-
+    And verify the team description "test description"
+    And delete the team

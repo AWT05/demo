@@ -3,18 +3,21 @@ package org.fundacion.demo.stepdefs;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import managepage.team.CreateTeamForm;
-import managepage.team.TeamHome;
+import managepage.team.TeamBoards;
+import managepage.team.TeamSettings;
 
 import static org.testng.Assert.assertEquals;
 
 public class TeamStepDef {
 
     private CreateTeamForm teamForm;
-    private TeamHome teamHome;
+    private TeamBoards teamBoards;
+    private TeamSettings teamSettings;
 
     public TeamStepDef(){
       teamForm = new CreateTeamForm();
-      teamHome = new TeamHome();
+      teamBoards = new TeamBoards();
+      teamSettings = new TeamSettings();
     }
 
     @And("Fill the team name as {string}")
@@ -49,6 +52,18 @@ public class TeamStepDef {
 
     @Then("verify the team name {string}")
     public void verifyTheTeamName(String expectedName) {
-        assertEquals(teamHome.getTeamName(), expectedName);
+        assertEquals(teamBoards.getTeamName(), expectedName);
+    }
+
+    @And("verify the team description {string}")
+    public void verifyTheTeamDescription(String expectedDescription) {
+        assertEquals(teamBoards.getDescription(),expectedDescription);
+    }
+
+    @And("delete the team")
+    public void deleteTheTeam() {
+        teamBoards.selectTeamSettings();
+        teamSettings.selectDeleteTeam();
+        teamSettings.confirmDeleteTeam();
     }
 }
