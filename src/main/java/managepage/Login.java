@@ -23,10 +23,9 @@ public class Login extends MobileBasePage {
     }*/
 
     public void login(){
-        setInputField(userTextBox, USER_NAME);
-        setInputField(passTextBox, USER_PASSWORD);
-        clickButton(loginButton);
+        action.setInputField(userTextBox, USER_NAME);
+        action.setInputField(passTextBox, USER_PASSWORD);
+        action.clickButton(loginButton);
     }
-
 
 }

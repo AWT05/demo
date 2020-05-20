@@ -40,7 +40,7 @@ public class CreateTeamForm extends MobileBasePage {
 
     public void selectTeamTypeMenu(String typeTeam) {
         CommonEvents.clickButton(teamTypeMenu);
-        selectListWebElement(typeTeam, teamTypeList);
+        action.selectListWebElement(typeTeam, teamTypeList);
     }
 
     public void fillTextArea(String description){

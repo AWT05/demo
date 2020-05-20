@@ -8,8 +8,8 @@ public class Home extends MobileBasePage{
     By createTeamButton = By.cssSelector("._2jR0BZMM5cBReR[data-test-id=header-create-team-button]");
 
     public void selectCreateTeam(){
-        clickButton(createButton);
-        clickButton(createTeamButton);
+        action.clickButton(createButton);
+        action.clickButton(createTeamButton);
     }
 
 

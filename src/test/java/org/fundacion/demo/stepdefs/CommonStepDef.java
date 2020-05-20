@@ -7,8 +7,13 @@ import managepage.Login;
 
 public class CommonStepDef {
 
-    Login loginPage = new Login();
-    Home homePage = new Home();
+    private Login loginPage;
+    private Home homePage;
+
+    public CommonStepDef() {
+        loginPage = new Login();
+        homePage = new Home();
+    }
 
     @Given("The user set the authentication with correct credentials")
     public void userSetTheAuthentication() {
