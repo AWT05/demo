@@ -9,7 +9,7 @@ public class TeamSettings extends PageObject {
     @FindBy(css = "div.window-module a.quiet-button")
     WebElement deleteTeam;
 
-    @FindBy(css = "input.js-confirm[type=submit]")
+    @FindBy(css = ".pop-over-content input.js-confirm")
     WebElement deleteForEver;
 
     public TeamSettings(WebDriver driver) {

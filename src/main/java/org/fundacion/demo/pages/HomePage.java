@@ -22,4 +22,14 @@ public class HomePage extends PageObject {
         homeNavCreateTeamButton.click();
         return new CreateTeamOverlay(driver);
     }
+
+    public HomePage displayCreationButtons() {
+        headerMenuButton.click();
+        return this;
+    }
+
+    public CreateTeamOverlay createTeam() {
+        headerMenuCreateTeamButton.click();
+        return new CreateTeamOverlay(driver);
+    }
 }
