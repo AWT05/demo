@@ -1,4 +1,4 @@
-package org.fundacion.demo;
+package org.fundacion.demo.examples;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -14,6 +14,7 @@ public class Demo {
 		ChromeDriver driver = new ChromeDriver();
 
 		driver.manage().window().setSize(new Dimension(414, 736));
+		//driver.manage().window().
 
 		driver.get("https://trello.com/login");
 

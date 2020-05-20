@@ -1,4 +1,4 @@
-package org.fundacion.demo;
+package org.fundacion.demo.examples;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -44,6 +44,7 @@ public class SeleniumWaits {
         driver.get(PAGE_URL);
         //xpath using name
         driver.findElement(By.xpath("//input[@name = 'q']")).sendKeys("facebook");
+        driver.getTitle();
         //xpath using class
         driver.findElement(By.xpath("//div[@class='FPdoLc tfB0Bf']/center/input[@class='gNO89b']")).click();
         //no existing element, using xpath id

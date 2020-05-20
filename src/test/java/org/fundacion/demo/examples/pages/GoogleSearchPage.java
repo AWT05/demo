@@ -1,4 +1,4 @@
-package org.fundacion.demo.pages;
+package org.fundacion.demo.examples.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

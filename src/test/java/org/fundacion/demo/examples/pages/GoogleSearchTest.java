@@ -1,7 +1,6 @@
-package org.fundacion.demo;
+package org.fundacion.demo.examples.pages;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.fundacion.demo.pages.GoogleSearchPage;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
