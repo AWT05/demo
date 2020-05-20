@@ -39,8 +39,7 @@ public class MobileBasePage {
     public void selectListWebElement(String webElementItem, List<WebElement> webElementList){
         /*Select selectList = new Select(driver.findElement(By.cssSelector("._38pq5NbRWAG39y")));
         selectList.selectByVisibleText(typeTeam);*/
-        List<WebElement> typesList = webElementList;
-        for(WebElement type : typesList){
+        for(WebElement type : webElementList){
             if(type.getText().equals(webElementItem)) {
                 ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.elementToBeClickable(type));
                 type.click();
