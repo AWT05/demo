@@ -9,8 +9,13 @@ import static org.testng.Assert.assertEquals;
 
 public class TeamStepDef {
 
-    CreateTeamForm teamForm = new CreateTeamForm();
-    TeamHome teamHome = new TeamHome();
+    private CreateTeamForm teamForm;
+    private TeamHome teamHome;
+
+    public TeamStepDef(){
+      teamForm = new CreateTeamForm();
+      teamHome = new TeamHome();
+    }
 
     @And("Fill the team name as {string}")
     public void fillTheTeamNameAs(String teamName) {
@@ -44,7 +49,6 @@ public class TeamStepDef {
 
     @Then("verify the team name {string}")
     public void verifyTheTeamName(String expectedName) {
-        String actualName = teamHome.getTeamName();
-        assertEquals(actualName, expectedName);
+        assertEquals(teamHome.getTeamName(), expectedName);
     }
 }

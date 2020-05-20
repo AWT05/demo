@@ -6,8 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
-
 public class WebDriverAction {
 
     protected WebDriver driver;
@@ -41,17 +39,5 @@ public class WebDriverAction {
     public String getElementText(WebElement webElement) {
         wait.until(ExpectedConditions.attributeToBeNotEmpty(webElement, "innerText"));
         return webElement.getText();
-    }
-
-    public void selectListWebElement(String webElementItem, List<WebElement> webElementList) {
-        /*Select selectList = new Select(driver.findElement(By.cssSelector("._38pq5NbRWAG39y")));
-        selectList.selectByVisibleText(typeTeam);*/
-        for (WebElement type : webElementList) {
-            if (type.getText().equals(webElementItem)) {
-                wait.until(ExpectedConditions.elementToBeClickable(type));
-                type.click();
-                break;
-            }
-        }
     }
 }

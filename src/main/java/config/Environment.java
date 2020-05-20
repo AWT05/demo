@@ -61,6 +61,4 @@ public class Environment {
     public int getExplicitTimeWait() {
         return Integer.parseInt(getEnvProperty(EXPLICIT_TIME_WAIT));
     }
-
-
 }
