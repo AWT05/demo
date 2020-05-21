@@ -29,6 +29,9 @@ public class CreateTeamForm extends MobileBasePage {
     @FindBy(css = ".autocomplete-input")
     private WebElement emailTextBox;
 
+    @FindBy(css = ".eg0KI5SqghoOFd")
+    private WebElement inviteMembersLatter;
+
     public void fillTeamName(String name) {
         action.setInputField(teamNameTextBox, name);
     }
@@ -53,5 +56,9 @@ public class CreateTeamForm extends MobileBasePage {
 
     public void fillEmailTexBox(String email) {
         action.setInputField(emailTextBox, email);
+    }
+
+    public void inviteMembersLatterButton(){
+        action.clickButton(inviteMembersLatter);
     }
 }

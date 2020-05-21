@@ -3,7 +3,7 @@ Feature: Create Team
   Background: Set authentication
     Given The user set the authentication with correct credentials
 
-  Scenario: Create a Team
+  Scenario: Create a Team inviting another user imperative way
     When The user goes to pull Create button
     And Fill the team name as "New test team"
     And Select "Education" option in the team type drop down menu
@@ -14,3 +14,9 @@ Feature: Create Team
     Then verify the team name "New test team"
     And verify the team description "test description"
     And delete the team
+
+  Scenario: Create a team declarative way
+    When the user creates a team with name as "declarative test team"
+    And the team type as "Education"
+    And the description as "declarative test description"
+    Then verifies the team data and clean workspace
