@@ -4,7 +4,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,8 +20,6 @@ public class Home extends PageObject{
     private final static String TEAM_TYPE_XPATH = "//*[@id=\"teamTypeSelect\"]/div/div";
     private final static String CONTINUE_CREATE_TEAM_CSS = "._2MgouXHqRQDP_5";
     private final static String SKIP_TEAM_MEMBER_CSS = ".eg0KI5SqghoOFd";
-//    private WebDriver drivers;
-//    private WebDriverWait wait;
 
     @FindBy(xpath = ADD_BUTTON_XPATH)
     private WebElement AddButton;

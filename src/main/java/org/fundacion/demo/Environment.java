@@ -1,7 +1,6 @@
 package org.fundacion.demo;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import org.slf4j.Logger;
@@ -22,16 +21,11 @@ public class Environment {
         try (FileInputStream fileInputStream = new FileInputStream(PROPERTIES_FILE_PATH)) {
             properties = new Properties();
             properties.load(fileInputStream);
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             String message = "Environment config file not found.";
             LOGGER.error(message);
             LOGGER.info(message, e);
-            //throw new MissingConfigurationsError(message);
-        } catch (IOException e) {
-            String message = "Input/Output exception, failed to load gradle.properties";
-            LOGGER.error(message);
-            LOGGER.info(message, e);
-            //throw new MissingConfigurationsError(message);
+            throw new RuntimeException(message, e);
         }
     }
 
@@ -70,7 +64,4 @@ public class Environment {
         String baseUri = getEnvProperty(BASE_URL);
         return baseUri;
     }
-
-
-
 }
