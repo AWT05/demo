@@ -14,16 +14,15 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Home {
-    private final static String TEAM_NAME = "Hello new team!";
+    private final static String TEAM_NAME = "Hello new team3!";
     private final static String ADD_BUTTON_XPATH = "//*[@id=\"header\"]/div[2]/button[1]/span";
     private final static String CREATE_TEAM_CSS = "button[data-test-id=header-create-team-button]";
     private final static String TEAM_NAME_CLASS_NAME = "_1CLyNodCAa-vQi";
     private final static String TEAM_TYPE_XPATH = "//*[@id=\"teamTypeSelect\"]/div/div";
-    private final static String CONTINUE_CREATE_TEAM_CSS ="._2MgouXHqRQDP_5";
-    private final static String SKIP_TEAM_MEMBER_CSS = "show-later-button"; //eg0KI5SqghoOFd
+    private final static String CONTINUE_CREATE_TEAM_CSS = "._2MgouXHqRQDP_5";
+    private final static String SKIP_TEAM_MEMBER_CSS = ".eg0KI5SqghoOFd";
     private WebDriver drivers;
     private WebDriverWait wait;
-
 
     @FindBy(xpath = ADD_BUTTON_XPATH)
     WebElement AddButton;
@@ -43,15 +42,14 @@ public class Home {
     @FindBy(css = SKIP_TEAM_MEMBER_CSS)
     WebElement SkipAddMemberTeamButton;
 
-    public Home(ChromeDriver driver) {
+    public Home(WebDriver driver) {
         this.drivers = driver;
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 15);
         PageFactory.initElements(drivers, this);
 
     }
 
     public void addButtonClick() {
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS) ;
         wait.until(ExpectedConditions.elementToBeClickable(AddButton));
         AddButton.click();
     }
@@ -68,10 +66,10 @@ public class Home {
             if (option.getText().equals("Education")) {
                 option.click();
                 ContinueTeamCreationButton.click();
+                wait.until(ExpectedConditions.elementToBeClickable(SkipAddMemberTeamButton));
                 SkipAddMemberTeamButton.click();
                 break;
             }
         }
     }
-
 }

@@ -4,13 +4,14 @@ import Pages.Home;
 import Pages.Login;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class TeamTests {
-    ChromeDriver driver;
+    WebDriver driver;
 
     @BeforeMethod
     public void init() {
@@ -25,12 +26,11 @@ public class TeamTests {
         driver.quit();
     }
 
-
     @Test
     public void testLoginTrelloByPage() {
 
         Login LoginPage = new Login(driver);
-        LoginPage.logInIntoTrello();
+        LoginPage.logInIntoTrello("carledriss3", "P@ssw0rd");
 //        assertEquals("home", page.getText());
     }
 
@@ -40,8 +40,7 @@ public class TeamTests {
         Login LoginPage = new Login(driver);
         LoginPage.logInIntoTrello();
         Home HomePage = new Home(driver);
-        HomePage.createTeam();
+        HomePage.createBasicTeam();
     }
-
 }
 

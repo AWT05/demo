@@ -31,4 +31,11 @@ public class Login {
         Password.sendKeys(PASSWORD);
         logInGreenButton.click();
     }
+
+    public void logInIntoTrello(String userName,String password) {
+        driver.get(URL);
+        Username.sendKeys(userName);
+        Password.sendKeys(password);
+        logInGreenButton.click();
+    }
 }
