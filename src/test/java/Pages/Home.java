@@ -2,6 +2,7 @@ package Pages;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
@@ -18,7 +19,9 @@ public class Home {
     private final static String CREATE_TEAM_CSS = "button[data-test-id=header-create-team-button]";
     private final static String TEAM_NAME_CLASS_NAME = "_1CLyNodCAa-vQi";
     private final static String TEAM_TYPE_XPATH = "//*[@id=\"teamTypeSelect\"]/div/div";
-    private ChromeDriver drivers;
+    private final static String CONTINUE_CREATE_TEAM_CSS ="._2MgouXHqRQDP_5";
+    private final static String SKIP_TEAM_MEMBER_CSS = "show-later-button"; //eg0KI5SqghoOFd
+    private WebDriver drivers;
     private WebDriverWait wait;
 
 
@@ -34,6 +37,12 @@ public class Home {
     @FindBy(xpath = TEAM_TYPE_XPATH)
     WebElement TeamTypeMenu;
 
+    @FindBy(css = CONTINUE_CREATE_TEAM_CSS)
+    WebElement ContinueTeamCreationButton;
+
+    @FindBy(css = SKIP_TEAM_MEMBER_CSS)
+    WebElement SkipAddMemberTeamButton;
+
     public Home(ChromeDriver driver) {
         this.drivers = driver;
         wait = new WebDriverWait(driver, 10);
@@ -47,23 +56,22 @@ public class Home {
         AddButton.click();
     }
 
-    public void createTeam() {
+    public void createBasicTeam() {
         addButtonClick();
         CreateTeamButton.click();
         TeamNameInput.sendKeys(TEAM_NAME);
         TeamTypeMenu.click();
-//        wait.until(ExpectedConditions.elementToBeClickable());
-//        List<WebElement> options=driver.findElementsByXPath("/html/body/div[14]/div/section/div/nav/ul/li[2]/button/p");
-        List<WebElement> options = drivers.findElementsByCssSelector("div[data-test-id=header-create-team-type-input-");
-//        wait.until(ExpectedConditions.attributeToBeNotEmpty(name, "innerText"));
+
+        List<WebElement> options = drivers.findElements(By.cssSelector("._38pq5NbRWAG39y"));
 
         for (WebElement option : options) {
             if (option.getText().equals("Education")) {
                 option.click();
+                ContinueTeamCreationButton.click();
+                SkipAddMemberTeamButton.click();
                 break;
             }
         }
     }
-
 
 }

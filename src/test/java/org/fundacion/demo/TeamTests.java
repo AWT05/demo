@@ -31,6 +31,7 @@ public class TeamTests {
 
         Login LoginPage = new Login(driver);
         LoginPage.logInIntoTrello();
+//        assertEquals("home", page.getText());
     }
 
     @Test
@@ -43,3 +44,4 @@ public class TeamTests {
     }
 
 }
+
