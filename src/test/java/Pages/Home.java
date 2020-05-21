@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Home extends PageObject{
-    private final static String TEAM_NAME = "Hello new team4!";
+    private final static String TEAM_NAME = "Hello new team Organization!";
     private final static String ADD_BUTTON_XPATH = "//*[@id=\"header\"]/div[2]/button[1]/span";
     private final static String CREATE_TEAM_CSS = "button[data-test-id=header-create-team-button]";
     private final static String TEAM_NAME_CLASS_NAME = "_1CLyNodCAa-vQi";
