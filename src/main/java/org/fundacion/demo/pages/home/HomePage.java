@@ -1,5 +1,7 @@
-package org.fundacion.demo.pages;
+package org.fundacion.demo.pages.home;
 
+import org.fundacion.demo.pages.teams.CreateTeamOverlay;
+import org.fundacion.demo.pages.PageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,17 +21,17 @@ public class HomePage extends PageObject {
     }
 
     public CreateTeamOverlay quickCreateTeam() {
-        homeNavCreateTeamButton.click();
+        click(homeNavCreateTeamButton);
         return new CreateTeamOverlay(driver);
     }
 
     public HomePage displayCreationButtons() {
-        headerMenuButton.click();
+        click(headerMenuButton);
         return this;
     }
 
     public CreateTeamOverlay createTeam() {
-        headerMenuCreateTeamButton.click();
+        click(headerMenuCreateTeamButton);
         return new CreateTeamOverlay(driver);
     }
 }

@@ -1,11 +1,14 @@
-package org.fundacion.demo.pages;
+package org.fundacion.demo.pages.teams;
 
+import org.fundacion.demo.pages.PageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class TeamPage extends PageObject {
+
+    private static final String ATTRIBUTE_INNER_TEXT = "innerText";
 
     @FindBy(css = ".tabbed-pane-header-details h1")
     WebElement name;
@@ -18,12 +21,12 @@ public class TeamPage extends PageObject {
     }
 
     public String getName() {
-        wait.until(ExpectedConditions.attributeToBeNotEmpty(name, "innerText"));
+        wait.until(ExpectedConditions.attributeToBeNotEmpty(name, ATTRIBUTE_INNER_TEXT));
         return name.getText();
     }
 
     public TeamSettings goToSettings() {
-        settings.click();
+        click(settings);
         return new TeamSettings(driver);
     }
 }

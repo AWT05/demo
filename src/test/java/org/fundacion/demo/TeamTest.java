@@ -1,8 +1,8 @@
 package org.fundacion.demo;
 
-import org.fundacion.demo.pages.HomePage;
-import org.fundacion.demo.pages.LoginPage;
-import org.fundacion.demo.pages.TeamPage;
+import org.fundacion.demo.pages.home.HomePage;
+import org.fundacion.demo.pages.login.LoginPage;
+import org.fundacion.demo.pages.teams.TeamPage;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -29,25 +29,24 @@ public class TeamTest {
     public void creationTeamTest() {
         teamPage = homePage.quickCreateTeam()
                 .setValues("New Lu Team", EDUCATION.toString())
-                .continueCreation()
                 .skipAddMembers();
 
         assertEquals(teamPage.getName(), "New Lu Team");
     }
 
     @Test
-    public void creationTeamInLightScreemTest() {
+    public void creationTeamInLightScreenTest() {
         lightScreen();
         teamPage = homePage.displayCreationButtons().createTeam()
                 .setValues("By Menu", EDUCATION.toString())
-                .continueCreation()
+                .setDescription("nueva descrip")
                 .skipAddMembers();
+
         assertEquals(teamPage.getName(), "By Menu");
     }
 
     @AfterMethod
     public void deleteTeam() {
-        homePage = teamPage.goToSettings().delete();
-        getChromeDriver().quit();
+        homePage = teamPage.goToSettings().deleteForEver();
     }
 }

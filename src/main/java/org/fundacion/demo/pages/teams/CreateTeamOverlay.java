@@ -1,5 +1,6 @@
-package org.fundacion.demo.pages;
+package org.fundacion.demo.pages.teams;
 
+import org.fundacion.demo.pages.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,7 +18,7 @@ public class CreateTeamOverlay extends PageObject {
     private WebElement inputName;
 
     @FindBy(css = "#teamTypeSelect")
-    private WebElement typeSelect;
+    private WebElement selectTeamType;
 
 
     public CreateTeamOverlay(WebDriver driver) {
@@ -25,22 +26,27 @@ public class CreateTeamOverlay extends PageObject {
     }
 
     public CreateTeamOverlay setValues(String name, String type) {
-
         inputName.sendKeys(name);
-        typeSelect.click();
-        driver.findElement(By.cssSelector("div[data-test-id=header-create-team-type-input-".concat(type).concat("]"))).click();
-        driver.findElement(By.cssSelector("footer button[data-test-id=header-create-team-submit-button]")).click();
+
+        click(selectTeamType);
+        String chosenType = "div[data-test-id=header-create-team-type-input-".concat(type).concat("]");
+        WebElement createTeam = driver.findElement(By.cssSelector(chosenType));
+        click(createTeam);
+
+        WebElement continueButton = driver.findElement(By.cssSelector("footer button[data-test-id=header-create-team-submit-button]"));
+        click(continueButton);
 
         return this;
     }
 
-    public CreateTeamOverlay continueCreation() {
-        continueCreation.click();
+    public CreateTeamOverlay setDescription(String desc) {
+        inputName.sendKeys(desc);
         return this;
     }
+
 
     public TeamPage skipAddMembers() {
-        skipMembersButton.click();
+        click(skipMembersButton);
         return new TeamPage(driver);
     }
 }

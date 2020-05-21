@@ -1,12 +1,14 @@
-package org.fundacion.demo.pages;
+package org.fundacion.demo.pages.login;
 
+import org.fundacion.demo.pages.PageObject;
+import org.fundacion.demo.pages.home.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends PageObject {
 
-    private final static String URL = "https://trello.com/login";
+    private final static String URL = "/login";
 
     @FindBy(css = "#user")
     WebElement username;
@@ -31,7 +33,7 @@ public class LoginPage extends PageObject {
     }
 
     public HomePage submit() {
-        button.click();
+        click(button);
         return new HomePage(driver);
     }
 }
