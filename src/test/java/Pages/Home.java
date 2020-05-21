@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Home {
-    private final static String TEAM_NAME = "Hello new team3!";
+    private final static String TEAM_NAME = "Hello new team4!";
     private final static String ADD_BUTTON_XPATH = "//*[@id=\"header\"]/div[2]/button[1]/span";
     private final static String CREATE_TEAM_CSS = "button[data-test-id=header-create-team-button]";
     private final static String TEAM_NAME_CLASS_NAME = "_1CLyNodCAa-vQi";
@@ -25,28 +25,27 @@ public class Home {
     private WebDriverWait wait;
 
     @FindBy(xpath = ADD_BUTTON_XPATH)
-    WebElement AddButton;
+    private WebElement AddButton;
 
     @FindBy(css = CREATE_TEAM_CSS)
-    WebElement CreateTeamButton;
+    private WebElement CreateTeamButton;
 
     @FindBy(className = TEAM_NAME_CLASS_NAME)
-    WebElement TeamNameInput;
+    private WebElement TeamNameInput;
 
     @FindBy(xpath = TEAM_TYPE_XPATH)
-    WebElement TeamTypeMenu;
+    private WebElement TeamTypeMenu;
 
     @FindBy(css = CONTINUE_CREATE_TEAM_CSS)
-    WebElement ContinueTeamCreationButton;
+    private WebElement ContinueTeamCreationButton;
 
     @FindBy(css = SKIP_TEAM_MEMBER_CSS)
-    WebElement SkipAddMemberTeamButton;
+    private WebElement SkipAddMemberTeamButton;
 
     public Home(WebDriver driver) {
         this.drivers = driver;
         wait = new WebDriverWait(driver, 15);
         PageFactory.initElements(drivers, this);
-
     }
 
     public void addButtonClick() {
@@ -61,7 +60,6 @@ public class Home {
         TeamTypeMenu.click();
 
         List<WebElement> options = drivers.findElements(By.cssSelector("._38pq5NbRWAG39y"));
-
         for (WebElement option : options) {
             if (option.getText().equals("Education")) {
                 option.click();
