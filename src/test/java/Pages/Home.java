@@ -18,8 +18,10 @@ public class Home extends PageObject{
     private final static String CREATE_TEAM_CSS = "button[data-test-id=header-create-team-button]";
     private final static String TEAM_NAME_CLASS_NAME = "_1CLyNodCAa-vQi";
     private final static String TEAM_TYPE_XPATH = "//*[@id=\"teamTypeSelect\"]/div/div";
+    private final static String TEAM_TYPE_DROPDOWN_CSS = "._38pq5NbRWAG39y";
     private final static String CONTINUE_CREATE_TEAM_CSS = "._2MgouXHqRQDP_5";
     private final static String SKIP_TEAM_MEMBER_CSS = ".eg0KI5SqghoOFd";
+
 
     @FindBy(xpath = ADD_BUTTON_XPATH)
     private WebElement AddButton;
@@ -54,15 +56,15 @@ public class Home extends PageObject{
         AddButton.click();
     }
 
-    public void createBasicTeam() {
+    public void createBasicTeam(String teamType) {
         addButtonClick();
         CreateTeamButton.click();
         TeamNameInput.sendKeys(TEAM_NAME);
         TeamTypeMenu.click();
 
-        List<WebElement> options = drivers.findElements(By.cssSelector("._38pq5NbRWAG39y"));
+        List<WebElement> options = drivers.findElements(By.cssSelector(TEAM_TYPE_DROPDOWN_CSS));
         for (WebElement option : options) {
-            if (option.getText().equals("Education")) {
+            if (option.getText().equals(teamType)) {
                 option.click();
                 ContinueTeamCreationButton.click();
                 wait.until(ExpectedConditions.elementToBeClickable(SkipAddMemberTeamButton));

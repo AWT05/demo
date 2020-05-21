@@ -20,7 +20,7 @@ public class TeamTests extends FunctionalTest {
         Login LoginPage = new Login(driver);
         LoginPage.logInIntoTrello();
         Home HomePage = new Home(driver);
-        HomePage.createBasicTeam();
+        HomePage.createBasicTeam("Education");
     }
 }
 
