@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class Home {
+public class Home extends PageObject{
     private final static String TEAM_NAME = "Hello new team4!";
     private final static String ADD_BUTTON_XPATH = "//*[@id=\"header\"]/div[2]/button[1]/span";
     private final static String CREATE_TEAM_CSS = "button[data-test-id=header-create-team-button]";
@@ -21,8 +21,8 @@ public class Home {
     private final static String TEAM_TYPE_XPATH = "//*[@id=\"teamTypeSelect\"]/div/div";
     private final static String CONTINUE_CREATE_TEAM_CSS = "._2MgouXHqRQDP_5";
     private final static String SKIP_TEAM_MEMBER_CSS = ".eg0KI5SqghoOFd";
-    private WebDriver drivers;
-    private WebDriverWait wait;
+//    private WebDriver drivers;
+//    private WebDriverWait wait;
 
     @FindBy(xpath = ADD_BUTTON_XPATH)
     private WebElement AddButton;
@@ -43,10 +43,14 @@ public class Home {
     private WebElement SkipAddMemberTeamButton;
 
     public Home(WebDriver driver) {
-        this.drivers = driver;
-        wait = new WebDriverWait(driver, 15);
-        PageFactory.initElements(drivers, this);
+        super(driver);
     }
+
+//    public Home(WebDriver driver) {
+//        this.drivers = driver;
+//        wait = new WebDriverWait(driver, 15);
+//        PageFactory.initElements(drivers, this);
+//    }
 
     public void addButtonClick() {
         wait.until(ExpectedConditions.elementToBeClickable(AddButton));
