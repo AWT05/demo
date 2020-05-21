@@ -1,0 +1,32 @@
+[
+  {
+    "name": "APP",
+    "baseUri": "https://trello.com",
+    "accounts": [
+      {
+        "userName": "carledriss3",
+        "password": "P@ssw0rd"
+      },
+      {
+        "userName": "carledriss3",
+        "password": "P@ssw0rd"
+      }
+    ]
+  },
+  {
+    "name": "API",
+    "baseUri": "https://api.trello.com/1",
+    "accounts": [
+      {
+        "userName": "carledriss3",
+        "apiKey": "6e182b335d29171a42745053c9ace19d",
+        "apiToken": "6e3c7246b53366b1cd8d8e61f66394d29b282f92e72efd6b9ef30d9e25dbf0b6"
+      },
+      {
+        "userName": "carledriss3",
+        "apiKey": "6e182b335d29171a42745053c9ace19d",
+        "apiToken": "6e3c7246b53366b1cd8d8e61f66394d29b282f92e72efd6b9ef30d9e25dbf0b6"
+      }
+    ]
+  }
+]

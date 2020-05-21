@@ -18,6 +18,7 @@ dependencies {
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
     // https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager
     compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '4.0.0'
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple',  version: '1.1.1'
 
 
     // https://mvnrepository.com/artifact/org.testng/testng
