@@ -21,6 +21,7 @@ public class TeamTests extends FunctionalTest {
         LoginPage.logInIntoTrello();
         Home HomePage = new Home(driver);
         HomePage.createBasicTeam("Education");
+        //Falta limpiar el ambiente
     }
 }
 
