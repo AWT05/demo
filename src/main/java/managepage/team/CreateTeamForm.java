@@ -8,28 +8,25 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CreateTeamForm extends MobileBasePage {
 
-    @FindBy(css = "._1f6hQ1rpgO5o-J ._1CLyNodCAa-vQi")//id
+    @FindBy(css = "input[data-test-id='header-create-team-name-input']")//id
     private WebElement teamNameTextBox;
 
-    @FindBy(css = ".css-dmzcl._1T1MG_BX1zeaq8")
+    @FindBy(css = "div[data-test-id='header-create-team-type-input'] > div")
     private WebElement teamTypeMenu;
 
-    @FindBy(css = "._2vrbr9OyhcQOwQ ._15aIJYNKhrO4vB")
+    @FindBy(css = "textarea[id*='create-team-org-description']")
     private WebElement teamDescriptionTextArea;
 
-    @FindBy(css = "._38pq5NbRWAG39y")
-    private WebElement chooseTeamType;
-
-    @FindBy(css = "._3UeOvlU6B5KUnS.X1P6DVryq8CYGC._2MgouXHqRQDP_5")
+    @FindBy(css = "button[data-test-id*='create-team-submit-button']")
     private WebElement continueButton;
 
-    @FindBy(css = ".fullWidthButton")
+    @FindBy(css = "button.autocomplete-btn")
     private WebElement inviteButton;
 
-    @FindBy(css = ".autocomplete-input")
+    @FindBy(css = "input.autocomplete-input")
     private WebElement emailTextBox;
 
-    @FindBy(css = ".eg0KI5SqghoOFd")
+    @FindBy(css = "a[data-test-id='show-later-button']")
     private WebElement inviteMembersLatter;
 
     public void fillTeamName(String name) {
@@ -38,8 +35,10 @@ public class CreateTeamForm extends MobileBasePage {
 
     public void selectTeamTypeMenu(String item) {
         action.clickButton(teamTypeMenu);
-        wait.until(ExpectedConditions.elementToBeClickable(chooseTeamType));
-        driver.findElement(By.xpath("//li[contains(text(), '".concat(item).concat("')]"))).click();
+        WebElement selectType = driver.findElement(By.
+                cssSelector("div[data-test-id='header-create-team-type-input-".concat(item).concat("'] li")));
+        wait.until(ExpectedConditions.elementToBeClickable(selectType));
+        selectType.click();
     }
 
     public void fillTextArea(String description) {
@@ -58,7 +57,7 @@ public class CreateTeamForm extends MobileBasePage {
         action.setInputField(emailTextBox, email);
     }
 
-    public void inviteMembersLatterButton(){
+    public void inviteMembersLatterButton() {
         action.clickButton(inviteMembersLatter);
     }
 }

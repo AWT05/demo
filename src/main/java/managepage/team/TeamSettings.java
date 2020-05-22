@@ -6,10 +6,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class TeamSettings extends MobileBasePage {
 
-    @FindBy(css = ".window-module.u-gutter span")
+    @FindBy(css = "div.window-module.u-gutter span")
     private WebElement deleteTeamButton;
 
-    @FindBy(css = ".js-confirm.full.negate")
+    @FindBy(css = "input.js-confirm.full.negate")
     private WebElement confirmDeleteButton;
 
     public void selectDeleteTeam(){

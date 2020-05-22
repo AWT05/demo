@@ -9,13 +9,13 @@ import java.util.Map;
 
 public class TeamBoards extends MobileBasePage {
 
-    @FindBy(css = "._2BCgr50F6ruIZ5")
+    @FindBy(css = "div.tabbed-pane-header-details h1")
     private WebElement teamName;
 
-    @FindBy(css = "._3Ea60-0nkKsQ4D")
+    @FindBy(css = "div.tabbed-pane-header-details p")
     private WebElement teamDescription;
 
-    @FindBy(css = ".tabbed-pane-nav-item-button.js-org-account")
+    @FindBy(css = "a.tabbed-pane-nav-item-button.js-org-account")
     private WebElement settingsButton;
 
     public String getTeamName() {
