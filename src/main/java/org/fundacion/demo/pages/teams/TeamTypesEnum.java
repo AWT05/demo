@@ -1,12 +1,11 @@
-package org.fundacion.demo;
+package org.fundacion.demo.pages.teams;
 
-public enum TeamTypes {
+public enum TeamTypesEnum {
     EDUCATION("education");
 
     private final String value;
 
-    TeamTypes(String value) {
-
+    TeamTypesEnum(final String value) {
         this.value = value;
     }
 
