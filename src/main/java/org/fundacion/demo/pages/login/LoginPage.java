@@ -6,24 +6,34 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPage extends PageObject {
+public final class LoginPage extends PageObject {
 
-    private final static String URL = "/login";
+    private static final String URL = "https://trello.com/login";
+    private static final String USER_ID = "#user";
+    private static final String PASSWORD_ID = "#password";
+    private static final String ACCOUNT_BUTTON = "input.account-button";
 
-    @FindBy(css = "#user")
-    WebElement username;
+    @FindBy(css = USER_ID)
+    private WebElement username;
 
-    @FindBy(css = "#password")
-    WebElement password;
+    @FindBy(css = PASSWORD_ID)
+    private WebElement password;
 
-    @FindBy(css = "input.account-button")
-    WebElement button;
+    @FindBy(css = ACCOUNT_BUTTON)
+    private WebElement button;
 
-    public LoginPage(WebDriver driver) {
+    public LoginPage(final WebDriver driver) {
         super(driver);
     }
 
-    public LoginPage setCredentials(String username, String password) {
+    /**
+     * Sets credentials values to the form.
+     *
+     * @param username account username.
+     * @param password security password.
+     * @return this Login page.
+     */
+    public LoginPage setCredentials(final String username, final String password) {
         driver.get(URL);
 
         this.username.sendKeys(username);
@@ -32,6 +42,11 @@ public class LoginPage extends PageObject {
         return this;
     }
 
+    /**
+     * Submits the form.
+     *
+     * @return a new Home page.
+     */
     public HomePage submit() {
         click(button);
         return new HomePage(driver);

@@ -8,16 +8,22 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PageObject {
-    protected WebDriverWait wait;
-    protected WebDriver driver;
+    private static final int TEN_SECONDS = 10;
+    protected final WebDriverWait wait;
+    protected final WebDriver driver;
 
-    public PageObject(WebDriver driver) {
+    public PageObject(final WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, 10);
-        PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10), this);
+        this.wait = new WebDriverWait(driver, TEN_SECONDS);
+        PageFactory.initElements(new AjaxElementLocatorFactory(driver, TEN_SECONDS), this);
     }
 
-    public void click(WebElement element) {
+    /**
+     * Makes click in the web element.
+     *
+     * @param element web element.
+     */
+    public void click(final WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }

@@ -6,17 +6,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePage extends PageObject {
-    @FindBy(css = "button[data-test-id=home-navigation-create-team-button]")
+public final class HomePage extends PageObject {
+    private static final String CREATE_TEAM_BUTTON = "button[data-test-id=home-navigation-create-team-button]";
+    private static final String HEADER_CREATE_MENU_BUTTON = "button[data-test-id=header-create-menu-button]";
+    private static final String HEADER_CREATE_TEAM_BUTTON = "button[data-test-id=header-create-team-button]";
+
+    @FindBy(css = CREATE_TEAM_BUTTON)
     private WebElement homeNavCreateTeamButton;
 
-    @FindBy(css = "button[data-test-id=header-create-menu-button]")
+    @FindBy(css = HEADER_CREATE_MENU_BUTTON)
     private WebElement headerMenuButton;
 
-    @FindBy(css = "button[data-test-id=header-create-team-button]")
+    @FindBy(css = HEADER_CREATE_TEAM_BUTTON)
     private WebElement headerMenuCreateTeamButton;
 
-    public HomePage(WebDriver driver) {
+    public HomePage(final WebDriver driver) {
         super(driver);
     }
 

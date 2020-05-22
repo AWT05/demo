@@ -6,15 +6,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class TeamSettings extends PageObject {
+public final class TeamSettings extends PageObject {
 
-    @FindBy(css = "div.window-module a.quiet-button")
-    WebElement deleteTeam;
+    public static final String DELETE_BUTTON = "a.quiet-button";
+    public static final String DELETE_CONFIRM = "input.js-confirm";
+    @FindBy(css = DELETE_BUTTON)
+    private WebElement deleteTeam;
 
-    @FindBy(css = "div.no-back input.js-confirm")
-    WebElement deleteForEver;
+    @FindBy(css = DELETE_CONFIRM)
+    private WebElement deleteForEver;
 
-    public TeamSettings(WebDriver driver) {
+    public TeamSettings(final WebDriver driver) {
         super(driver);
     }
 

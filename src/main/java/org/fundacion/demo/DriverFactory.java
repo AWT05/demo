@@ -5,13 +5,18 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class DriverFactory {
+public final class DriverFactory {
+    private static final int WIDTH = 414;
+    private static final int HEIGHT = 736;
     private static WebDriver driver;
 
     private DriverFactory() {
         // prevent instantiations
     }
 
+    /**
+     * @return the chrome web driver.
+     */
     public static WebDriver getChromeDriver() {
         WebDriverManager.chromedriver().setup();
         if (driver == null) {
@@ -20,7 +25,10 @@ public class DriverFactory {
         return driver;
     }
 
+    /**
+     * Resizes the window to 414x736 px.
+     */
     public static void lightScreen() {
-        driver.manage().window().setSize(new Dimension(414, 736));
+        driver.manage().window().setSize(new Dimension(WIDTH, HEIGHT));
     }
 }

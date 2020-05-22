@@ -6,17 +6,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class TeamPage extends PageObject {
+public final class TeamPage extends PageObject {
 
     private static final String ATTRIBUTE_INNER_TEXT = "innerText";
 
     @FindBy(css = ".tabbed-pane-header-details h1")
-    WebElement name;
+    private WebElement name;
 
     @FindBy(css = ".tabbed-pane-nav-item a[data-tab=settings]")
-    WebElement settings;
+    private WebElement settings;
 
-    public TeamPage(WebDriver driver) {
+    public TeamPage(final WebDriver driver) {
         super(driver);
     }
 
