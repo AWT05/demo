@@ -1,5 +1,6 @@
 package org.fundacion.demo.pages.home;
 
+import org.fundacion.demo.pages.menus.MenuBoardsPage;
 import org.fundacion.demo.pages.teams.CreateTeamOverlay;
 import org.fundacion.demo.pages.PageObject;
 import org.openqa.selenium.WebDriver;
@@ -20,6 +21,9 @@ public final class HomePage extends PageObject {
     @FindBy(css = HEADER_CREATE_TEAM_BUTTON)
     private WebElement headerMenuCreateTeamButton;
 
+    @FindBy(css = "button[data-test-id=\"header-boards-menu-button\"]")
+    private WebElement headerMenuBoards;
+
     public HomePage(final WebDriver driver) {
         super(driver);
     }
@@ -37,5 +41,10 @@ public final class HomePage extends PageObject {
     public CreateTeamOverlay createTeam() {
         click(headerMenuCreateTeamButton);
         return new CreateTeamOverlay(driver);
+    }
+
+    public MenuBoardsPage openMenuBoards() {
+        click(headerMenuBoards);
+        return new MenuBoardsPage(driver);
     }
 }

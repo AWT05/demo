@@ -8,14 +8,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PageObject {
-    private static final int TEN_SECONDS = 10;
+    private static final int SECONDS = 20;
     protected final WebDriverWait wait;
     protected final WebDriver driver;
 
     public PageObject(final WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, TEN_SECONDS);
-        PageFactory.initElements(new AjaxElementLocatorFactory(driver, TEN_SECONDS), this);
+        this.wait = new WebDriverWait(driver, SECONDS);
+        PageFactory.initElements(new AjaxElementLocatorFactory(driver, SECONDS), this);
     }
 
     /**

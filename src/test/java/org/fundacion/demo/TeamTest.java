@@ -37,8 +37,8 @@ public class TeamTest {
         mapfields.put("description", "description");
 
         CreateTeamOverlay teamOverlay = homePage.quickCreateTeam();
-        teamOverlay.fillForm(mapfields);
 
+        teamOverlay.fillForm(mapfields);
         teamPage = teamOverlay.nextSection().skipAddMembers();
 
         assertEquals(teamPage.getName(), "New Lu Team");

@@ -22,8 +22,12 @@ public final class LoginPage extends PageObject {
     @FindBy(css = ACCOUNT_BUTTON)
     private WebElement button;
 
+    @FindBy(css = "input#login")
+    private WebElement initWithAtlassian;
+
     public LoginPage(final WebDriver driver) {
         super(driver);
+        driver.get(URL);
     }
 
     /**
@@ -34,11 +38,8 @@ public final class LoginPage extends PageObject {
      * @return this Login page.
      */
     public LoginPage setCredentials(final String username, final String password) {
-        driver.get(URL);
-
         this.username.sendKeys(username);
         this.password.sendKeys(password);
-
         return this;
     }
 
@@ -50,5 +51,17 @@ public final class LoginPage extends PageObject {
     public HomePage submit() {
         click(button);
         return new HomePage(driver);
+    }
+
+    /**
+     * Sets Atlassian credential.
+     *
+     * @param email account username.
+     * @return a new LoginPassword page.
+     */
+    public LoginPasswordPage setEmail(final String email) {
+        this.username.sendKeys(email);
+        click(initWithAtlassian);
+        return new LoginPasswordPage(driver);
     }
 }
